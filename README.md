@@ -17,14 +17,14 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|nickname|string|null: false, unique: true|
+|nickname|string|null: false, unique: true, add_index :users, :nickname|
 |email|string|null: false, unique: true|
 
 
 ### Association
 - has_many :groups, through: :memebers
 - has_many :messages
-
+- has_many :members
 
 ## groupsテーブル
 
@@ -35,7 +35,7 @@
 ### Association
 - has_many :users, through: :memebers
 - has_many :messages
-
+- has_many :members
 
 
 ## membersテーブル
