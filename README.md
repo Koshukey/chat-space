@@ -17,7 +17,7 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|nickname|string|null: false, unique: true, add_index :users, :nickname|
+|nickname|string|null: false, unique: true, index: true|
 |email|string|null: false, unique: true|
 
 
