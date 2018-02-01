@@ -14,14 +14,17 @@
             ユーザー名
           %ul.header__lists
             %li.list
+              %a{:href => "/groups/new"}
               / ここではペンマークのアイコンをおく
-              %i.fa.fa-pencil-square-o.icon
+                %i.fa.fa-pencil-square-o.icon
+
             %li.list
               %i.fa.fa-cog.icon
               / ここでは設定のアイコンをおく
         .groups
           / groupsは左サイドバーに表示されるグループたちということ
           .group
+          %a{:href => "/groups/1/messages"}
             .group__name
               / 左サイドバーに表示されるグループの名前
               掲示板0
@@ -29,11 +32,13 @@
               / 左サイドバーに表示されるグループの直近のメッセージ
               写真送られるのが遅い
           .group
+          %a{:href => "/groups/2/messages"}
             .group__name
               aaaaaaaaaa
             .group__message
               まだメッセージはありません。
           .group
+          %a{:href => "/groups/3/messages"}
             .group__name
               sampleグループ
             .group__message
