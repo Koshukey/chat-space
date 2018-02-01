@@ -1,78 +1,75 @@
-!!!
-%html
-  %head
-    %meta{:charset => "UTF-8"}/
-    %title ChatSpace
-  %body
-    .notification
-      .notice
-        グループを作成しました
-    .wrapper
-      .side-bar
-        .header
-          %h3.header__name
-            ユーザー名
-          %ul.header__lists
-            %li.list
-              %a{:href => "/groups/new"}
-              / ここではペンマークのアイコンをおく
-                %i.fa.fa-pencil-square-o.icon
+.notification
+  .notice
+    グループを作成しました
+.wrapper
+  .side-bar
+    .header
+      %h3.header__name
+        ユーザー名
+      %ul.header__lists
+        /
+        %li.list
+        %a{:href => "/groups/new"}
+          / ここではペンマークのアイコンをおく
+          %i.fa.fa-pencil-square-o.icon
 
-            %li.list
-              %i.fa.fa-cog.icon
-              / ここでは設定のアイコンをおく
-        .groups
-          / groupsは左サイドバーに表示されるグループたちということ
-          .group
-          %a{:href => "/groups/1/messages"}
-            .group__name
-              / 左サイドバーに表示されるグループの名前
-              掲示板0
-            .group__message
-              / 左サイドバーに表示されるグループの直近のメッセージ
-              写真送られるのが遅い
-          .group
-          %a{:href => "/groups/2/messages"}
-            .group__name
-              aaaaaaaaaa
-            .group__message
-              まだメッセージはありません。
-          .group
-          %a{:href => "/groups/3/messages"}
-            .group__name
-              sampleグループ
-            .group__message
-              まだメッセージはありません。
-      .chat
-        .header
-          .left-header
-            .left-header__title
-              掲示板1
-            %ul.left-header__members
-              Member：
-              %li.member
-                kkkkk
-          .right-header
-            %a.right-header__button Edit
-        .messages
-          .message
-            .upper-message
-              .upper-message__user-name
-                kkkkk
-              .upper-message__date
-                2018/01/28 06:21
-            .lower-message
-              %p.lower-message__content
-                なにこれ
-        .form
-          %input#message_content.form__message{:name => "message[content]", :placeholder => "type a message", :type => "text"}/
-          / placeholdserでtype a messageという文を出現させる
-          .form__mask
-            %label.form__mask__image{:for => "message_image"}
-              %i.fa.fa-picture-o.icon
-                / 写真のアイコンを出現させる
-              %input#message_image.hidden{:name => "message[image]", :type => "file"}/
-              / input要素はtypeを指定することでsubmitボタンやファイル選択ボタンを設置することができる
-              / hiddenによってファイル選択のアイコンだけ見せるようにする
-          %input.form__submit{:name => "commit", :type => "submit", :value => "Send"}/
-          / value属性によってボタンの名前を表示させる
+        %li.list
+        %a{:href => "/users/1/edit"}
+          %i.fa.fa-cog.icon
+          / ここでは設定のアイコンをおく
+    .groups
+      / groupsは左サイドバーに表示されるグループたちということ
+      .group
+      %a{:href => "/groups/1/messages"}
+        .group__name
+          / 左サイドバーに表示されるグループの名前
+          掲示板0
+        .group__message
+          / 左サイドバーに表示されるグループの直近のメッセージ
+          写真送られるのが遅い
+      .group
+      %a{:href => "/groups/2/messages"}
+        .group__name
+          aaaaaaaaaa
+        .group__message
+          まだメッセージはありません。
+      .group
+      %a{:href => "/groups/3/messages"}
+        .group__name
+          sampleグループ
+        .group__message
+          まだメッセージはありません。
+  .chat
+    .header
+      .left-header
+        .left-header__title
+          掲示板1
+        %ul.left-header__members
+          Member：
+          %li.member
+            kkkkk
+      .right-header
+        %a.right-header__button Edit
+    .messages
+      / このjsmessageっていらないかも
+      .message
+        .upper-message
+          .upper-message__user-name
+            kkkkk
+          .upper-message__date
+            2018/01/28 06:21
+        .lower-message
+          %p.lower-message__content
+            なにこれ
+    .form
+      %input#message_content.form__message{:name => "message[content]", :placeholder => "type a message", :type => "text"}/
+      / placeholdserでtype a messageという文を出現させる
+      .form__mask
+        %label.form__mask__image{:for => "message_image"}
+          %i.fa.fa-picture-o.icon
+            / 写真のアイコンを出現させる
+          %input#message_image.hidden{:name => "message[image]", :type => "file"}/
+          / input要素はtypeを指定することでsubmitボタンやファイル選択ボタンを設置することができる
+          / hiddenによってファイル選択のアイコンだけ見せるようにする
+      %input.form__submit{:name => "commit", :type => "submit", :value => "Send"}/
+      / value属性によってボタンの名前を表示させる
