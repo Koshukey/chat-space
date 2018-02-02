@@ -9,18 +9,19 @@
       %ul.header__lists
         /
         %li.list
-        %a{:href => "/groups/new"}
+        =link_to'/groups/new' do
           / ここではペンマークのアイコンをおく
           %i.fa.fa-pencil-square-o.icon
 
+
         %li.list
-        %a{:href => "/users/1/edit"}
+        =link_to'/users/1/edit' do
           %i.fa.fa-cog.icon
           / ここでは設定のアイコンをおく
     .groups
       / groupsは左サイドバーに表示されるグループたちということ
       .group
-      %a{:href => "/groups/1/messages"}
+      =link_to'/groups/1/messages' do
         .group__name
           / 左サイドバーに表示されるグループの名前
           掲示板0
@@ -28,13 +29,13 @@
           / 左サイドバーに表示されるグループの直近のメッセージ
           写真送られるのが遅い
       .group
-      %a{:href => "/groups/2/messages"}
+      =link_to'/groups/2/messages' do
         .group__name
           aaaaaaaaaa
         .group__message
           まだメッセージはありません。
       .group
-      %a{:href => "/groups/3/messages"}
+      =link_to'/groups/3/messages' do
         .group__name
           sampleグループ
         .group__message
