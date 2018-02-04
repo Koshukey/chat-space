@@ -5,7 +5,7 @@
   .side-bar
     .header
       %h3.header__name
-        ユーザー名
+      = current_user.name
       %ul.header__lists
         /
         %li.list
@@ -15,7 +15,7 @@
 
 
         %li.list
-        =link_to'/users/1/edit' do
+        =link_to'/user/edit' do
           %i.fa.fa-cog.icon
           / ここでは設定のアイコンをおく
     .groups
