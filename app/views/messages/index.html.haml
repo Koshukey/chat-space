@@ -40,24 +40,12 @@
         %a.right-header__button Edit
     .messages
       / このjsmessageっていらないかも
-      .message
-        .upper-message
-          .upper-message__user-name
-            kkkkk
-          .upper-message__date
-            2018/01/28 06:21
-        .lower-message
-          %p.lower-message__content
-            なにこれ
+      = render @messages
     .form
-      %input#message_content.form__message{:name => "message[content]", :placeholder => "type a message", :type => "text"}/
-      / placeholdserでtype a messageという文を出現させる
-      .form__mask
-        %label.form__mask__image{:for => "message_image"}
-          %i.fa.fa-picture-o.icon
-            / 写真のアイコンを出現させる
-          %input#message_image.hidden{:name => "message[image]", :type => "file"}/
-          / input要素はtypeを指定することでsubmitボタンやファイル選択ボタンを設置することができる
-          / hiddenによってファイル選択のアイコンだけ見せるようにする
-      %input.form__submit{:name => "commit", :type => "submit", :value => "Send"}/
-      / value属性によってボタンの名前を表示させる
+      = form_for [@group, @message] do |f|
+        = f.text_field :content, class: 'form__message', placeholder: 'type a message'
+        .form__mask
+          = f.label :image, class: 'form__mask__image' do
+            = fa_icon 'picture-o', class: 'icon'
+            = f.file_field :image, class: 'hidden'
+        = f.submit 'Send', class: 'form__submit'
