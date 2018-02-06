@@ -2,31 +2,7 @@
   .notice
     グループを作成しました
 .wrapper
-  .side-bar
-    .header
-      %h3.header__name
-      = current_user.name
-      %ul.header__lists
-        /
-        %li.list
-        = link_to new_group_path do
-          / ここではペンマークのアイコンをおく
-          %i.fa.fa-pencil-square-o.icon
-
-
-        %li.list
-        =link_to edit_users_path do
-          %i.fa.fa-cog.icon
-          / ここでは設定のアイコンをおく
-    .groups
-      / groupsは左サイドバーに表示されるグループたちということ
-      .group
-        - current_user.groups.each do |group|
-          = link_to groups_path(group) do
-            .group__name
-              = group.name
-            .group__message
-              メッセージはまだありません。
+  =render partial: "shared/side_bar"
   .chat
     .header
       .left-header
