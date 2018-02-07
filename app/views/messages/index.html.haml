@@ -1,63 +1,30 @@
 .notification
   .notice
-    グループを作成しました
+
 .wrapper
-  .side-bar
-    .header
-      %h3.header__name
-      = current_user.name
-      %ul.header__lists
-        /
-        %li.list
-        = link_to new_group_path do
-          / ここではペンマークのアイコンをおく
-          %i.fa.fa-pencil-square-o.icon
-
-
-        %li.list
-        =link_to edit_users_path do
-          %i.fa.fa-cog.icon
-          / ここでは設定のアイコンをおく
-    .groups
-      / groupsは左サイドバーに表示されるグループたちということ
-      .group
-        - current_user.groups.each do |group|
-          = link_to groups_path(group) do
-            .group__name
-              = group.name
-            .group__message
-              メッセージはまだありません。
+  =render partial: "shared/side_bar"
   .chat
     .header
       .left-header
         .left-header__title
-          掲示板1
+          = @group.name
         %ul.left-header__members
           Member：
           %li.member
-            kkkkk
+            - @group.group_users.each do |group_user|
+              = group_user.user.name
       .right-header
-        %a.right-header__button Edit
+        %a.right-header__button
+          = link_to edit_group_path(@group.id) do
+            Edit
     .messages
       / このjsmessageっていらないかも
-      .message
-        .upper-message
-          .upper-message__user-name
-            kkkkk
-          .upper-message__date
-            2018/01/28 06:21
-        .lower-message
-          %p.lower-message__content
-            なにこれ
+      = render @messages
     .form
-      %input#message_content.form__message{:name => "message[content]", :placeholder => "type a message", :type => "text"}/
-      / placeholdserでtype a messageという文を出現させる
-      .form__mask
-        %label.form__mask__image{:for => "message_image"}
-          %i.fa.fa-picture-o.icon
-            / 写真のアイコンを出現させる
-          %input#message_image.hidden{:name => "message[image]", :type => "file"}/
-          / input要素はtypeを指定することでsubmitボタンやファイル選択ボタンを設置することができる
-          / hiddenによってファイル選択のアイコンだけ見せるようにする
-      %input.form__submit{:name => "commit", :type => "submit", :value => "Send"}/
-      / value属性によってボタンの名前を表示させる
+      = form_for [@group, @message] do |f|
+        = f.text_field :content, class: 'form__message', placeholder: 'type a message'
+        .form__mask
+          = f.label :image, class: 'form__mask__image' do
+            = fa_icon 'picture-o', class: 'icon'
+            = f.file_field :image, class: 'hidden'
+        = f.submit 'Send', class: 'form__submit'
