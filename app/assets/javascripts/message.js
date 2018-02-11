@@ -50,15 +50,18 @@ $(function(){
       contentType: false
     })
     .done(function(data){
+
 //doneメソッドはjqXHRオブジェクトによって定義されている
 //帰ってきたJSONをdoneメソッドで受け取る
 //即時関数の第一引数になっているdataとは？サーバーから返ってくるデータのこと（今回はjbuilderで作成したcreate.json.jbuilderのデータのこと）
       var html = buildHTML(data);
 //htmlという変数にcreate.json.jbuilderのデータを代入する
-      $('.messages').append(html)
+      $('.messages').append(html);
 //appendメソッドとは？→$(‘セレクタ’).append(‘追加するもの’);
 //val()はvalue属性を取得、操作することができる
 //引数ありで呼ぶことで中身をその値に帰ることができる
+     $( ".form__submit").prop( "disabled", false );
+
     })
    .fail(function(){
 //サーバーエラー(通信に失敗した時)fail関数が呼ばれる
