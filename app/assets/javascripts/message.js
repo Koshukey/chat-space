@@ -2,18 +2,20 @@ $(function(){
   function buildHTML(message){
 //functionによって関数の宣言 buildHTMlは関数の名前 messageは引数
 //function 関数名 (引数){関数を定義する文}
-    var html = `<div class="upper-message">
-                  <div class="upper-message__user-name">
-                  ${message.user_name}
+    var html = `<div class=message>
+                  <div class="upper-message">
+                    <div class="upper-message__user-name">
+                    ${message.user_name}
+                    </div>
+                    <div class="upper-message__date">
+                    ${message.created_at}
+                    </div>
                   </div>
-                  <div class="upper-message__date">
-                  ${message.created_at}
+                    <div class="lower-message">
+                    <p class="lower-message__content">
+                    ${message.content}
+                    </p>
                   </div>
-                </div>
-                  <div class="lower-message">
-                  <p class="lower-message__content">
-                  ${message.content}
-                  </p>
                 </div>`
 
     return html;
