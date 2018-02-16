@@ -77,6 +77,10 @@ $(function(){
 //val()はvalue属性を取得、操作することができる
 //引数ありで呼ぶことで中身をその値に帰ることができる
      $( ".form__submit").prop( "disabled", false );
+
+     $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');
+//console.logで調べてみるとscrollHeightは95pxづつ増えていた
+//scrollHeightメソッドはJqueryのメソッドなのでDOM要素をJqueryに変換しないといけない
     })
    .fail(function(){
 //サーバーエラー(通信に失敗した時)fail関数が呼ばれる
