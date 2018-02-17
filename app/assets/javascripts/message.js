@@ -16,10 +16,10 @@ $(function(){
                     <p class="lower-message__content">
                     ${message.content}
                     </p>
-                    <img src="${message.image}"class= 'lower-message__image'>
+                    <img src="${message.image}" class="lower-message__image">
                   </div>
                 </div>`
-
+console.log(message.image)
     return html;
 //htmlという変数を作った
 //代入するものは複数行に渡るのでテンプレートリテラル記法によって書く
