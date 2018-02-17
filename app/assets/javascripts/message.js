@@ -19,7 +19,6 @@ $(function(){
                     <img src="${message.image}"class= 'lower-message__image'>
                   </div>
                 </div>`
-                console.log(message.image)
 
     return html;
 //htmlという変数を作った
