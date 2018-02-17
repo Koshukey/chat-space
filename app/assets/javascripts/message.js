@@ -12,13 +12,14 @@ $(function(){
                     ${message.created_at}
                     </div>
                   </div>
-                    <div class="lower-message">
+                  <div class="lower-message">
                     <p class="lower-message__content">
                     ${message.content}
                     </p>
-                    <img src="${message.image}” class= 'lower-message__image'>
+                    <img src="${message.image}"class= 'lower-message__image'>
                   </div>
                 </div>`
+                console.log(message.image)
 
     return html;
 //htmlという変数を作った
