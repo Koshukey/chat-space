@@ -18,8 +18,8 @@ $(function(){
                     </p>
                     <img src="${message.image}" class="lower-message__image">
                   </div>
-                </div>`
-console.log(message.image)
+                </div> `
+
     return html;
 //htmlという変数を作った
 //代入するものは複数行に渡るのでテンプレートリテラル記法によって書く
