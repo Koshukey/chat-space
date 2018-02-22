@@ -3,24 +3,43 @@ $(function(){
   function buildHTML(message){
 //functionによって関数の宣言 buildHTMlは関数の名前 messageは引数
 //function 関数名 (引数){関数を定義する文}
-    var html = `<div class=message>
-                  <div class="upper-message">
-                    <div class="upper-message__user-name">
-                    ${message.user_name}
+    if ( message.image == null){
+//if文の条件について${message.image}としたらuncaught token error {となった。
+      var html = `<div class=message>
+                    <div class="upper-message">
+                      <div class="upper-message__user-name">
+                      ${message.user_name}
+                      </div>
+                      <div class="upper-message__date">
+                      ${message.created_at}
+                      </div>
                     </div>
-                    <div class="upper-message__date">
-                    ${message.created_at}
+                    <div class="lower-message">
+                      <p class="lower-message__content">
+                      ${message.content}
+                      </p>
                     </div>
-                  </div>
-                  <div class="lower-message">
-                    <p class="lower-message__content">
-                    ${message.content}
-                    </p>
-                    <img src="${message.image}" class="lower-message__image">
-                  </div>
-                </div> `
-
-    return html;
+                  </div> `
+      return html;
+    }else{
+      var html = `<div class=message>
+                    <div class="upper-message">
+                      <div class="upper-message__user-name">
+                      ${message.user_name}
+                      </div>
+                      <div class="upper-message__date">
+                      ${message.created_at}
+                      </div>
+                    </div>
+                    <div class="lower-message">
+                      <p class="lower-message__content">
+                      ${message.content}
+                      </p>
+                      <img src="${message.image}" class="lower-message__image">
+                    </div>
+                  </div> `
+      return html;
+    }
 //htmlという変数を作った
 //代入するものは複数行に渡るのでテンプレートリテラル記法によって書く
   }
@@ -30,6 +49,7 @@ $(function(){
 //submitイベントが起きた時
     e.preventDefault();
     var formData = new FormData(this);
+console.log(formData)
 //ここでのnewはJavascriptのnew演算子  新たなインスタンスを作ることができる
 //FormDataオブジェクトクラスのインスタンスを作成
 //FormDataオブジェクトはフォームのデータの送信に使用できる
