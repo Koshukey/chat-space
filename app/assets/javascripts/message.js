@@ -3,9 +3,9 @@ $(function(){
   function buildHTML(message){
 //functionによって関数の宣言 buildHTMlは関数の名前 messageは引数
 //function 関数名 (引数){関数を定義する文}
-    if ( message.image == null){
 //if文の条件について${message.image}としたらuncaught token error {となった。
-      var html = `<div class=message>
+
+    var html = `<div class=message>
                     <div class="upper-message">
                       <div class="upper-message__user-name">
                       ${message.user_name}
@@ -18,31 +18,14 @@ $(function(){
                       <p class="lower-message__content">
                       ${message.content}
                       </p>
+                      ${message.image == null ? "" : `<img src="${message.image}" class="lower-message__image">`}
                     </div>
                   </div> `
-      return html;
-    }else{
-      var html = `<div class=message>
-                    <div class="upper-message">
-                      <div class="upper-message__user-name">
-                      ${message.user_name}
-                      </div>
-                      <div class="upper-message__date">
-                      ${message.created_at}
-                      </div>
-                    </div>
-                    <div class="lower-message">
-                      <p class="lower-message__content">
-                      ${message.content}
-                      </p>
-                      <img src="${message.image}" class="lower-message__image">
-                    </div>
-                  </div> `
-      return html;
-    }
+    return html;
+  }
 //htmlという変数を作った
 //代入するものは複数行に渡るのでテンプレートリテラル記法によって書く
-  }
+
   $('#new_message').on('submit', function(e){
 //$はjQueryという文字を省略したものとも考えられる
 //onメソッドは第一引数にイベント名、第2引数にそのイベントが実行された時に実行されるfunctionを指定できる
