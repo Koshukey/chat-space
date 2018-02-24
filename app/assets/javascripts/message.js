@@ -84,6 +84,8 @@ console.log(formData)
      $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');
 //console.logで調べてみるとscrollHeightは95pxづつ増えていた
 //scrollHeightメソッドはJqueryのメソッドなのでDOM要素をJqueryに変換しないといけない
+     $('.form__message').val('');
+     $('.hidden').val('');
     })
    .fail(function(){
 //サーバーエラー(通信に失敗した時)fail関数が呼ばれる
