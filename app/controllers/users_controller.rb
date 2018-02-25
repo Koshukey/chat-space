@@ -12,10 +12,12 @@ class UsersController < ApplicationController
   end
 
   def index
+
     @users = User.where('name LIKE(?)', "%#{params[:keyword]}%")
     respond_to do |format|
       format.html
-      format.json
+      format.json  { render 'index', json: @users }
+
     end
   end
 
