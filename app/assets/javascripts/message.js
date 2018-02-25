@@ -4,7 +4,7 @@ $(function(){
 //functionによって関数の宣言 buildHTMlは関数の名前 messageは引数
 //function 関数名 (引数){関数を定義する文}
 //if文の条件について${message.image}としたらuncaught token error {となった。
-
+    var imagehtml = message.image == null ? "" : `<img src="${message.image}" class="lower-message__image">`
     var html = `<div class=message>
                     <div class="upper-message">
                       <div class="upper-message__user-name">
@@ -18,7 +18,7 @@ $(function(){
                       <p class="lower-message__content">
                       ${message.content}
                       </p>
-                      ${message.image == null ? "" : `<img src="${message.image}" class="lower-message__image">`}
+                      ${imagehtml}
                     </div>
                   </div> `
     return html;
