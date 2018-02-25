@@ -1,13 +1,13 @@
 $(function() {
 
-  var user_search_list = $(".chat-group-form__field--right");
+  var user_search_list = $(".chat-group-form__field--right--search");
 
   function appendUser(user) {
     var html = `
-                <div class="chat-group-user clearfix">
-                  <p class="chat-group-user__name">${user.name}</p>
-                    <a class="user-search-add chat-group-user__btn chat-group-user__btn--add" data-user-id="${user.id}" data-user-name="${user.name}">追加</a>
-                </div>
+                 <div class="chat-group-user clearfix">
+                   <p class="chat-group-user__name">${user.name}</p>
+                     <a class="user-search-add chat-group-user__btn chat-group-user__btn--add" data-user-id="${user.id}" data-user-name="${user.name}">追加</a>
+                 </div>
                `
     user_search_list.append(html);
   };
@@ -30,7 +30,7 @@ $(function() {
 
       .done(function(data) {
         var html = appendUser(data);
-        $('chat-group-form__field--right').append(html);
+        $(".user-search-result").append(html);
       })
 
       .fail(function(){
