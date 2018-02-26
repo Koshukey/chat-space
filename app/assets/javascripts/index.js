@@ -1,15 +1,14 @@
 $(function() {
 
-  var user_search_list = $(".chat-group-form__field--right--search");
-
   function appendUser(user) {
-    var html = `
-                 <div class="chat-group-user clearfix">
-                   <p class="chat-group-user__name">${user.name}</p>
-                     <a class="user-search-add chat-group-user__btn chat-group-user__btn--add" data-user-id="${user.id}" data-user-name="${user.name}">追加</a>
-                 </div>
+    var html = `<div class="chat-group-form__field--right--search">
+                  <div class="chat-group-user clearfix">
+                    <p class="chat-group-user__name">${user.name}</p>
+                      <a class="user-search-add chat-group-user__btn chat-group-user__btn--add" data-user-id="${user.id}" data-user-name="${user.name}">追加</a>
+                  </div>
+               </div>
                `
-    user_search_list.append(html);
+   return html;
   };
 
   $(function() {
@@ -28,9 +27,11 @@ $(function() {
         dataType: 'json'
       })
 
-      .done(function(data) {
-        var html = appendUser(data);
-        $(".user-search-result").append(html);
+      .done(function(users) {
+        users.forEach(function(user){
+          var html = appendUser(user);
+          $(".user-search-result").append(html);
+        });
       })
 
       .fail(function(){
