@@ -28,10 +28,13 @@ $(function() {
       })
 
       .done(function(users) {
-        users.forEach(function(user){
-          var html = appendUser(user);
-          $(".user-search-result").append(html);
-        });
+        $(".user-search-result").empty();
+        if (users.length !== 0) {
+          users.forEach(function(user){
+            var html = appendUser(user);
+            $(".user-search-result").append(html);
+          });
+        }
       })
 
       .fail(function(){
