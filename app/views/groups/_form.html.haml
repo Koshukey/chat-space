@@ -25,16 +25,7 @@
       チャットメンバー
     .chat-group-form__field--right
       #search-users
-        - @users.each do |user|
-          /@usersという配列の中に現在グループに所属するuserたちの名前が入るようにする
-          #chat-group-user-8.chat-group-user.clearfix.js-chat-member
-            %input{name: "group[user_ids][]", type: "hidden", value: "#{user.id}"}/
-            %p.chat-group-user__name
-              =user.name
-            - if user.id != current_user.id
-              /現在ログインしているユーザー以外のユーザーの右に削除ボタンをつける
-              %a.user-search-remove.chat-group-user__btn.chat-group-user__btn--remove.js-remove-btn
-                削除
+
 
       / この部分はインクリメンタルサーチ（ユーザー追加の非同期化のときに使用します
       /

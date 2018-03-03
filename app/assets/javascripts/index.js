@@ -61,24 +61,28 @@ $(function() {
 
 
   $(document).on("click",".user-search-add", function() {
+    console.log(window)
+
 //追加ボタンが押された時
     $input = $(this);
+//jqueryオブジェクトを代入するのでわかりやすいようにinputという変数の前に$をつける
+//inputにdocumentを代入する
     var add_user_html = clickHTML($input);
-    $("#search-users").append( add_user_html);
+    $("#search-users").append(add_user_html);
 //#search-usersの下にhtmlを追加
-      $input.parent().remove();
-      $.ajax({
-        type: 'GET',
-        url: '/users',
-        dataType: 'json',
-      })
-      .done(function(data){
-      })
-      .fail(function(){
-         alert('追加に失敗しました');
-      })
+// console.log($input.parent())
+      $input.parent()[0].remove();
+//ここでremoveすることでチャットメンバーを追加のところから追加したuserを消す
+//parentメソッド→引数を省略すると親要素すべてを選択する 省略しなければ引数に指定した親要素のセレクタを選択する
+//セレクタとはスタイルを適用する対象のこと
+//removeメソッドとは→Jqueryオブジェクトで指定した要素を削除する
   });
 
+  $(document).on("click",".user-search-remove", function() {
 
+    $input = $(this);
+//ここのthisはuser-search-removeというclass属性が書いてある要素を取得してる
+    $input.parent().remove();
+//ここでparentメソッドでその要素の親要素であるchat-group-userごとremoveする
 
-
+  });
