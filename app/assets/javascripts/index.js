@@ -13,56 +13,47 @@ $(function() {
   };
 
 //$(function() {などはjsの即時関数 即時関数→、関数を定義すると同時に実行するための構文
-    $("#user-search-field").on("keyup", function() {
-      var input = $("#user-search-field").val();
+  $("#user-search-field").on("keyup", function() {
+    var input = $("#user-search-field").val();
 //valueメソッドでフォームの値を取得
-      var href = window.location.href
+    var href = window.location.href
 
+    $.ajax({
+      type: 'GET',
+      url: '/users',
+      data: { keyword: input },
+      dataType: 'json'
+    })
 
+    .done(function(users) {
+      $(".user-search-result").empty();
+      if (users.length !== 0) {
+        users.forEach(function(user){
+          var html = appendUser(user);
+          $(".user-search-result").append(html);
+        });
+      }
+    })
 
-      $.ajax({
-        type: 'GET',
-        url: '/users',
-        data: { keyword: input },
-        dataType: 'json'
-      })
-
-      .done(function(users) {
-        $(".user-search-result").empty();
-        if (users.length !== 0) {
-          users.forEach(function(user){
-            var html = appendUser(user);
-            console.log(html)
-            $(".user-search-result").append(html);
-          });
-        }
-      })
-
-      .fail(function(){
-        alert('通信に失敗しました');
-      });
-
+    .fail(function(){
+      alert('通信に失敗しました');
     });
+
+  });
 
 });
 
   function clickHTML(user){
-    var html = `<div class='chat-group-user clearfix js-chat-member' id='chat-group-user-8'>
+    var html = `<div class='chat-group-user clearfix js-chat-member' id='${user.attr("data-user-id")}'>
                   <input name='group[user_ids][]' type='hidden' value="${user.attr("data-user-id")}">
-                  <p class='chat-group-
-                  user__name'>${user.attr("data-user-name")}</p>
+                  <p class='chat-group-user__name'>${user.attr("data-user-name")}</p>
                   <a class='user-search-remove chat-group-user__btn chat-group-user__btn--remove js-remove-btn'>削除</a>
                </div>`
     return html;
-   };
+  };
 //attrメソッドによって引数に指定した属性の値を取得することができる
 //HTML5ではdata-*="value"の形式で属性名にプライベートな値を設定できるカスタムデータ属性の仕様と、そのカスタムデータ属性にJavaScriptからアクセスするAPIが定義された
-
-
-
   $(document).on("click",".user-search-add", function() {
-    console.log(window)
-
 //追加ボタンが押された時
     $input = $(this);
 //jqueryオブジェクトを代入するのでわかりやすいようにinputという変数の前に$をつける
