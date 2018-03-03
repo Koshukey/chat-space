@@ -15,7 +15,6 @@ $(function() {
 //$(function() {などはjsの即時関数 即時関数→、関数を定義すると同時に実行するための構文
   $("#user-search-field").on("keyup", function() {
     var input = $("#user-search-field").val();
-//valueメソッドでフォームの値を取得
     var href = window.location.href
 
     $.ajax({
