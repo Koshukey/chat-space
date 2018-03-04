@@ -76,3 +76,57 @@ $(function() {
 //ここでparentメソッドでその要素の親要素であるchat-group-userごとremoveする
 
   });
+
+  function addNewMessagesHTML(comment){
+    var html = `
+                 <div class = "message" data-messageid="${comment.id}>
+                   <div class = "upper-message">
+                     <div class = "upper-message__user-name">
+                     ${comment.name}
+                     </div>
+                     <div class = "upper-message__date">
+                     ${comment.date}
+                     </div>
+                   </div>
+                   <div class = "lower-message">
+                     <p class="lower-message-content">
+                     ${comment.content}
+                     </p>
+                     ${comment.image}
+                   </div>
+                 </div>
+                `
+  };
+
+  if (window.location.href.match(/\/groups\/\d+\/messages/)){
+       setInterval(autoUpdate,5000)
+  };
+
+  function autoUpdate {
+    var href = window.location.href;
+    var lastId = $('.message').last();
+
+    $.ajax({
+      url: href,
+      dataType:'json',
+      type:'GET',
+    })
+
+    .done(function(messages) {
+      if (message.id > lastId){
+        messages.forEach(function(message){
+        var html = addNewMessagesHTML(comment);
+        $('.messages').append(html);
+        });
+      };
+    })
+    .fail(function(){
+      alert('メッセージの取得に失敗しました');
+    });
+  };
+
+
+
+
+
+
