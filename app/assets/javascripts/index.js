@@ -38,7 +38,7 @@ $(function() {
 
   });
 
-});
+
 
   function clickHTML(user){
     var userId = user.attr("data-user-id");
@@ -102,7 +102,7 @@ $(function() {
        setInterval(autoUpdate,5000)
   };
 
-  function autoUpdate {
+  function autoUpdate() {
     var href = window.location.href;
     var lastId = $('.message').last();
 
@@ -112,21 +112,21 @@ $(function() {
       type:'GET',
     })
 
-    .done(function(messages) {
-      if (message.id > lastId){
-        messages.forEach(function(message){
-        var html = addNewMessagesHTML(comment);
-        $('.messages').append(html);
-        });
-      };
+    .done(function(data) {
+       data.messages.forEach(function(message){
+         console.log(lastId)
+         if (message.id > lastId){
+           var html = addNewMessagesHTML(comment);
+           $('.messages').append(html);
+         };
+       });
     })
     .fail(function(){
       alert('メッセージの取得に失敗しました');
     });
   };
 
-
-
+});
 
 
 
