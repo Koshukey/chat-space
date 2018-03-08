@@ -29,10 +29,9 @@ class GroupsController < ApplicationController
 
   private
   def group_params
-    params.require(:group).permit(:name, { :user_ids => [] })
+    params.require(:group).permit(:name, { user_ids: [] })
     #idsとはrailsのメソッド
     #主キーを取得する モデル.idsという使い方をする
-    binding.pry
   end
 
    def set_group
