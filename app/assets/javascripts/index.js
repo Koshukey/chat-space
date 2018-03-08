@@ -78,8 +78,9 @@ $(function() {
   });
 
   function addNewMessagesHTML(comment){
+    var imagehtml = comment.image == null ? "" : `<img src="${comment.image}" class="lower-message__image">`
     var html = `
-                 <div class = "message" data-messageid="${comment.id}>
+                 <div class = "message" data-messageid="${comment.id}">
                    <div class = "upper-message">
                      <div class = "upper-message__user-name">
                      ${comment.name}
@@ -89,15 +90,17 @@ $(function() {
                      </div>
                    </div>
                    <div class = "lower-message">
-                     <p class="lower-message-content">
+                     <p class="lower-message__content">
                      ${comment.content}
                      </p>
-                     ${comment.image}
+                     ${imagehtml}
                    </div>
                  </div>
                 `
+    return html;
   };
-
+//↑ここreturnしなかったらvar html = addNewMessagesHTML(message);のhtmlになんも格納されなかったから
+//return html;は絶対必要 returnしないとただhtmlに格納しだだけでaddNewMessagesHTMLはなんも持っていないことになる
   if (window.location.href.match(/\/groups\/\d+\/messages/)){
        setInterval(autoUpdate,5000)
   };
@@ -114,9 +117,9 @@ $(function() {
 
     .done(function(data) {
        data.messages.forEach(function(message){
-         console.log(lastId)
          if (message.id > lastId){
            var html = addNewMessagesHTML(message);
+           console.log(html)
            $('.messages').append(html);
          };
        });
