@@ -104,7 +104,7 @@ $(function() {
 
   function autoUpdate() {
     var href = window.location.href;
-    var lastId = $('.message').last();
+    var lastId = $('.message').last().attr('data-messageid');
 
     $.ajax({
       url: href,
@@ -116,7 +116,7 @@ $(function() {
        data.messages.forEach(function(message){
          console.log(lastId)
          if (message.id > lastId){
-           var html = addNewMessagesHTML(comment);
+           var html = addNewMessagesHTML(message);
            $('.messages').append(html);
          };
        });
@@ -128,5 +128,5 @@ $(function() {
 
 });
 
-
+//なぜattrメソッドでうまくいったのにgetAttributeメソッドではうまくいかなかったのか
 
