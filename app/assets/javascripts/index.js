@@ -38,7 +38,7 @@ $(function() {
 
   });
 
-});
+
 
   function clickHTML(user){
     var userId = user.attr("data-user-id");
@@ -76,3 +76,60 @@ $(function() {
 //ここでparentメソッドでその要素の親要素であるchat-group-userごとremoveする
 
   });
+
+  function addNewMessagesHTML(comment){
+    var imagehtml = comment.image == null ? "" : `<img src="${comment.image}" class="lower-message__image">`
+    var html = `
+                 <div class = "message" data-messageid="${comment.id}">
+                   <div class = "upper-message">
+                     <div class = "upper-message__user-name">
+                     ${comment.name}
+                     </div>
+                     <div class = "upper-message__date">
+                     ${comment.date}
+                     </div>
+                   </div>
+                   <div class = "lower-message">
+                     <p class="lower-message__content">
+                     ${comment.content}
+                     </p>
+                     ${imagehtml}
+                   </div>
+                 </div>
+                `
+    return html;
+  };
+//↑ここreturnしなかったらvar html = addNewMessagesHTML(message);のhtmlになんも格納されなかったから
+//return html;は絶対必要 returnしないとただhtmlに格納しだだけでaddNewMessagesHTMLはなんも持っていないことになる
+  if (window.location.href.match(/\/groups\/\d+\/messages/)){
+       setInterval(autoUpdate,5000)
+  };
+
+  function autoUpdate() {
+    var href = window.location.href;
+    var lastId = $('.message').last().attr('data-messageid');
+
+    $.ajax({
+      url: href,
+      dataType:'json',
+      type:'GET',
+    })
+
+    .done(function(data) {
+       data.messages.forEach(function(message){
+         if (message.id > lastId){
+           var html = addNewMessagesHTML(message);
+           $('.messages').append(html);
+           $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');
+         };
+       });
+    })
+    .fail(function(){
+      alert('メッセージの取得に失敗しました');
+    });
+  };
+
+});
+
+//なぜattrメソッドでうまくいったのにgetAttributeメソッドではうまくいかなかったのか
+

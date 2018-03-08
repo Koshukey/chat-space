@@ -32,7 +32,6 @@ $(function(){
 //submitイベントが起きた時
     e.preventDefault();
     var formData = new FormData(this);
-console.log(formData)
 //ここでのnewはJavascriptのnew演算子  新たなインスタンスを作ることができる
 //FormDataオブジェクトクラスのインスタンスを作成
 //FormDataオブジェクトはフォームのデータの送信に使用できる
@@ -83,7 +82,7 @@ console.log(formData)
 
      $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');
 //console.logで調べてみるとscrollHeightは95pxづつ増えていた
-//scrollHeightメソッドはJqueryのメソッドなのでDOM要素をJqueryに変換しないといけない
+//scrollHeigUncaught TypeError: messages.forEach is not a functiohtメソッドはJqueryのメソッドなのでDOM要素をJqueryに変換しないといけない
      $('.form__message').val('');
      $('.hidden').val('');
     })
