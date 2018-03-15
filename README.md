@@ -1,5 +1,14 @@
 # README
 
+##chatspaceとは
+簡易版slackのようなもの。
+ログイン機能、グループ作成機能、コメントの非同期通信、メッセージの自動更新機能を実装。
+
+https://user-images.githubusercontent.com/31874274/37439859-6a72cbda-283d-11e8-872f-e7c927427e52.png
+
+
+#DB設計
+
 ## messagesテーブル
 
 |Column|Type|Options|
@@ -48,4 +57,3 @@
 ### Association
 - belongs_to :group
 - belongs_to :user
-
