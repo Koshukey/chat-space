@@ -4,7 +4,8 @@
 簡易版slackのようなもの。
 ログイン機能、グループ作成機能、コメントの非同期通信、メッセージの自動更新機能を実装。
 
-https://user-images.githubusercontent.com/31874274/37439859-6a72cbda-283d-11e8-872f-e7c927427e52.png
+<img width="1043" alt="2018-03-15 10 43 40" src="https://user-images.githubusercontent.com/31874274/37439935-c56ec5f2-283d-11e8-93cd-c16ab660b238.png">
+
 
 
 #DB設計
