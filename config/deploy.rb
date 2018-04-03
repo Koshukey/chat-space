@@ -2,7 +2,7 @@
 lock "~> 3.10.1"
 
 set :application, "chat-space1"
-set :repo_url, "git@github.com:https://github.com/Koshukey/chat-space1.git"
+set :repo_url, "git@github.com:Koshukey/chat-space1.git"
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/uploads')
 
 set :rbenv_type, :user
